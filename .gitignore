@@ -1,1 +1,6 @@
 node_modules
+irec-api/node_modules
+irec-ux/node_modules
+irec-ux/.angular
+irec-ux/.vscode
+irec-api/.env
