@@ -11,6 +11,7 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@openzeppelin/contracts": "^5.2.0",
     "@prisma/client": "^6.5.0",
     "bcrypt": "^5.1.1",
     "cors": "^2.8.5",
@@ -31,7 +32,7 @@
     "@typechain/ethers-v6": "^0.5.0",
     "@typechain/hardhat": "^9.0.0",
     "chai": "^4.2.0",
-    "ethers": "^6.4.0",
+    "ethers": "^6.13.5",
     "hardhat": "^2.22.19",
     "hardhat-gas-reporter": "^1.0.8",
     "nodemon": "^3.1.9",

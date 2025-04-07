@@ -799,6 +799,11 @@
     "@nomicfoundation/solidity-analyzer-linux-x64-musl" "0.1.2"
     "@nomicfoundation/solidity-analyzer-win32-x64-msvc" "0.1.2"
 
+"@openzeppelin/contracts@^5.2.0":
+  version "5.2.0"
+  resolved "https://registry.yarnpkg.com/@openzeppelin/contracts/-/contracts-5.2.0.tgz#bd020694218202b811b0ea3eec07277814c658da"
+  integrity sha512-bxjNie5z89W1Ea0NZLZluFh8PrFNn9DH8DQlujEok2yjsOlraUPKID5p1Wk3qdNbf6XkQ1Os2RvfiHrrXLHWKA==
+
 "@prisma/client@^6.5.0":
   version "6.5.0"
   resolved "https://registry.yarnpkg.com/@prisma/client/-/client-6.5.0.tgz#b5f4aa3820ff523734ef4e8dffe364ac9888369e"
@@ -2180,7 +2185,7 @@ ethers@^5.7.2:
     "@ethersproject/web" "5.8.0"
     "@ethersproject/wordlists" "5.8.0"
 
-ethers@^6.4.0, ethers@^6.7.0:
+ethers@^6.13.5, ethers@^6.7.0:
   version "6.13.5"
   resolved "https://registry.yarnpkg.com/ethers/-/ethers-6.13.5.tgz#8c1d6ac988ac08abc3c1d8fabbd4b8b602851ac4"
   integrity sha512-+knKNieu5EKRThQJWwqaJ10a6HE9sSehGeqWN65//wE7j47ZpFhKAnHB/JJFibwwg61I/koxaPsXbXpD/skNOQ==
