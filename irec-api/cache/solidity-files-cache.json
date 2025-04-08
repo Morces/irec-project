@@ -2,8 +2,8 @@
   "_format": "hh-sol-cache-2",
   "files": {
     "/home/morces/Documents/DEV/COJANI/IREC/irec-api/contracts/IREC.sol": {
-      "lastModificationDate": 1744040714227,
-      "contentHash": "fa8f5138a8c8355f66c830954b2e371d",
+      "lastModificationDate": 1744054170623,
+      "contentHash": "767fcaa77156fc776103a1c78d27ba8d",
       "sourceName": "contracts/IREC.sol",
       "solcConfig": {
         "version": "0.8.28",

@@ -7,8 +7,8 @@ const cluster = require("cluster");
 const numCPUs = require("os");
 
 // Middlewares
-// const error = require("./API/Middleware/error");
-// const Auth = require("./API/Middleware/Auth");
+const error = require("./API/Middleware/error");
+const Auth = require("./API/Middleware/Auth");
 //
 
 const PORT = process.env.PORT || 6000;
@@ -16,6 +16,9 @@ const LESS_CPU = process.env.CPU || 0;
 const app = express();
 
 // ROUTES
+const TRADE = require("./API/Routes/trade");
+const TRANSACTION = require("./API/Routes/transactions");
+const USERS = require("./API/Routes/users");
 
 app.use(
   cors({
@@ -37,8 +40,11 @@ app.get("/", (req, res) => {
 // app.use(Auth);
 
 // All Routes
+app.use("/trade", TRADE);
+app.use("/transaction", TRANSACTION);
+app.use("/users", USERS);
 
-// app.use(error);
+app.use(error);
 
 if (cluster.isMaster) {
   console.log(`Master ${process.pid} is running`);

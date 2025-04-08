@@ -5,7 +5,7 @@ const jwt = require("jsonwebtoken");
 const Auth = async (req, res, next) => {
   let url = req.originalUrl;
 
-  if (url.includes("members/login")) {
+  if (url.includes("users/login")) {
     next();
     return;
   }

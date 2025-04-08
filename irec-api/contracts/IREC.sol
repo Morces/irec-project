@@ -7,7 +7,7 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 contract IREC is ERC20, Ownable {
     enum Source { Solar, Wind, Hydro, Geothermal }
     mapping(address => mapping(Source => uint256)) public userSourceBalances;
-    uint256 public constant PRICE_PER_IREC = 0.01 ether;
+    uint256 public constant PRICE_PER_IREC = 0.000001 ether;
 
     event Bought(address indexed buyer, Source source, uint256 quantity, uint256 totalCost);
     event Sold(address indexed seller, Source source, uint256 quantity, uint256 totalReceived);
