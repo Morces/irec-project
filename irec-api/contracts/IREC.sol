@@ -50,20 +50,16 @@ contract IREC is ERC20, Ownable {
         emit Sold(msg.sender, source, quantity, totalReceived);
     }
 
-    function transfer(address to, uint256 amount) public override returns (bool) {
-        Source source = Source.Solar;
-        for (uint256 i = 0; i < 4; i++) {
-            Source currentSource = Source(i);
-            if (userSourceBalances[msg.sender][currentSource] >= amount) {
-                source = currentSource;
-                break;
-            }
-        }
-        require(userSourceBalances[msg.sender][source] >= amount, "Insufficient I-REC balance for any source");
-        userSourceBalances[msg.sender][source] -= amount;
-        userSourceBalances[to][source] += amount;
-        return super.transfer(to, amount);
-    }
+  function transfer(address to, uint256 amount, Source source) public returns (bool) {
+    require(userSourceBalances[msg.sender][source] >= amount, "Insufficient I-REC balance for selected source");
+    require(balanceOf(msg.sender) >= amount, "Insufficient total I-REC balance");
+
+    userSourceBalances[msg.sender][source] -= amount;
+    userSourceBalances[to][source] += amount;
+
+    return super.transfer(to, amount);
+}
+
 
     function withdraw() external onlyOwner {
         uint256 balance = address(this).balance;

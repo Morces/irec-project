@@ -10,12 +10,10 @@ const provider = new ethers.JsonRpcProvider(
 const contractAddress = process.env.CONTRACT_ADDRESS;
 const contract = new ethers.Contract(contractAddress, contractABI, provider);
 
-// Simple API key for admin authentication
-const ADMIN_API_KEY = process.env.ADMIN_API_KEY || "your-admin-api-key";
+const ADMIN_API_KEY = process.env.ADMIN_API_KEY;
 
 const Mint = async (req, res, next) => {
   try {
-    // Check admin API key
     const apiKey = req.headers["x-api-key"];
     if (!apiKey || apiKey !== ADMIN_API_KEY) {
       return res.status(401).json({ error: "Unauthorized" });
