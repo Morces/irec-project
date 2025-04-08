@@ -2,7 +2,7 @@ const hre = require("hardhat");
 
 async function main() {
   const IREC = await hre.ethers.getContractFactory("IREC");
-  console.log("Deploying IREC contract to Sepolia...");
+  console.log("Deploying IREC contract to Local...");
   const irec = await IREC.deploy();
   await irec.waitForDeployment();
   const contractAddress = await irec.getAddress();
@@ -10,15 +10,15 @@ async function main() {
 
   console.log("Waiting for block confirmations before verification...");
   await irec.deploymentTransaction().wait(5);
-  try {
-    await hre.run("verify:verify", {
-      address: contractAddress,
-      constructorArguments: [],
-    });
-    console.log("Contract verified on Sepolia Etherscan!");
-  } catch (error) {
-    console.error("Verification failed:", error.message);
-  }
+  // try {
+  //   await hre.run("verify:verify", {
+  //     address: contractAddress,
+  //     constructorArguments: [],
+  //   });
+  //   console.log("Contract verified on Sepolia Etherscan!");
+  // } catch (error) {
+  //   console.error("Verification failed:", error.message);
+  // }
 }
 
 main()

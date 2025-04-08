@@ -4,15 +4,16 @@ const ethers = require("ethers");
 const contractABI = require("../../ABI/IREC.json");
 const prisma = require("../../Utils/prisma");
 
-const provider = new ethers.JsonRpcProvider(
-  `https://eth-sepolia.g.alchemy.com/v2/${process.env.ALCHEMY_API_KEY}`
-);
+const provider = new ethers.JsonRpcProvider("http://localhost:8545");
+
 const contractAddress = process.env.CONTRACT_ADDRESS;
 const contract = new ethers.Contract(contractAddress, contractABI, provider);
 
 const Sell = async (req, res, next) => {
   try {
     const { source, quantity } = req.body;
+
+    console.log(req?.user);
 
     if (!source || !quantity) {
       throw {

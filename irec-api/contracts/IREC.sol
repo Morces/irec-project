@@ -7,7 +7,7 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 contract IREC is ERC20, Ownable {
     enum Source { Solar, Wind, Hydro, Geothermal }
     mapping(address => mapping(Source => uint256)) public userSourceBalances;
-    uint256 public constant PRICE_PER_IREC = 0.000001 ether;
+    uint256 public pricePerIREC = 0.00000000001 ether;
 
     event Bought(address indexed buyer, Source source, uint256 quantity, uint256 totalCost);
     event Sold(address indexed seller, Source source, uint256 quantity, uint256 totalReceived);
@@ -29,7 +29,7 @@ contract IREC is ERC20, Ownable {
     }
 
     function buy(Source source, uint256 quantity) external payable {
-        uint256 totalCost = quantity * PRICE_PER_IREC;
+        uint256 totalCost = quantity * pricePerIREC;
         require(msg.value >= totalCost, "Insufficient ETH sent");
         _mint(msg.sender, quantity);
         userSourceBalances[msg.sender][source] += quantity;
@@ -42,7 +42,7 @@ contract IREC is ERC20, Ownable {
     function sell(Source source, uint256 quantity) external {
         require(userSourceBalances[msg.sender][source] >= quantity, "Insufficient I-REC balance for this source");
         require(balanceOf(msg.sender) >= quantity, "Insufficient total I-REC balance");
-        uint256 totalReceived = quantity * PRICE_PER_IREC;
+        uint256 totalReceived = quantity * pricePerIREC;
         require(address(this).balance >= totalReceived, "Contract has insufficient ETH to pay");
         _burn(msg.sender, quantity);
         userSourceBalances[msg.sender][source] -= quantity;
@@ -70,6 +70,12 @@ contract IREC is ERC20, Ownable {
     function getSourceBalance(address user, Source source) external view returns (uint256) {
         return userSourceBalances[user][source];
     }
+
+    function PRICE_PER_IREC() public view returns (uint256) {
+    require(pricePerIREC > 0, "Price not set");
+    return pricePerIREC;
+}
+
 
     receive() external payable {}
 }
